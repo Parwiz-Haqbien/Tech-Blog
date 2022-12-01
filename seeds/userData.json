@@ -4,15 +4,23 @@
       "email": "john@hotmail.com",
       "password": "password12345"
     },
+    
     {
       "name": "Ronald",
       "email": "ronald@gmail.com",
       "password": "password12345"
     },
+
     {
       "name": "Paz",
       "email": "paz@aol.com",
       "password": "password12345"
-    }
+    },
+
+    {
+      "name": "Alice",
+      "email": "Alice@Alicemail.com",
+      "password": "password"
+  }
   ]
   

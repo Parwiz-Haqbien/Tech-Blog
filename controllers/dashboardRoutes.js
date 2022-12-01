@@ -1,102 +1,55 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
 
-const {
-  User,
-  Post,
-  Comment
-} = require('../models');
-const useAuth = require('../utils/auth')
+const { User, Post } = require('../models');
 
-router.get('/' , useAuth, (req, res) => {
-    Post.findAll({
-        where: {
-            id: req.session.user_id
-          },
-          attributes: [
-            'id',
-            'title',
-            'content',
-            'created_at'
-          ],
-          include: [{
-            model: Comment,
-            attributes: ['id', 'comment_text', 'post_id' , 'user_id' , 'created_at'],
-            include: {
-              model: User,
-              attributes: ['username']
-            }
-          },
-          {
-            model: User,
-              attributes: ['username']
-          }
-        ]
-    })
-    .then(postingData => {
-        const posts = postingData.map( post => post.get ({
-           plain: true
-        }));
-        res.render('dashboard', {
-          posts,
-          loggedIn: true
+const withAuth = require('../utils/auth');
+
+router.get('/', withAuth, async (req,res) => {
+    try {
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+            include: [{ model: Post }],
         });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+        const user = userData.get({ plain: true });
+        res.render('dashboard', {
+            ...user,
+            logged_in: req.session.logged_in,
+            logged_name: req.session.logged_name,
+        });
+    } catch (error) {
+        res.status(500).json(error);
+    }
 });
 
-router.get('/edit/:id', (req, res) => {
-    Post.findOne({
-        where: {
-            id: req.params.id
-          },
-          attributes: [
-            'id',
-            'title',
-            'content',
-            'created_at'
-          ],
-          include: [{
-            model: Comment,
-            attributes: ['id', 'comment_text', 'post_id' , 'user_id' , 'created_at'],
-            include: {
-              model: User,
-              attributes: ['username']
-            }
-          },
-          {
-            model: User,
-              attributes: ['username']
-          }
-        ]
-    })
-    .then(postingData => {
-        if (!postingData) {
-          res.status(404).json({
-              message: 'No post is found with this id'
-          });
-          return;
-      }
-      const post = postingData.get({
-        plain:true
-      });
-      res.render('edit-post' , {
-        post,
-        loggedIn: true
-      });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-})
-router.get('/new', (req, res) => {
-    res.render('add-post', {
-        loggedIn: true
-    })
-})
+router.get('/newpost', withAuth, (req, res) => {
+    try {
+        if(req.session.logged_in) {
+            res.render('new-post',{
+                logged_in: req.session.logged_in
+            });
+            return;
+        }
+        res.redirect('/dashboard');
+    } catch (error) {
+        res.status(500).json(error);
+    }
+    
+});
+
+
+router.get("/edit/:id", withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            include: [{ model: User }],
+        });
+        const post = postData.get({ plain: true });
+        res.render('edit', {
+            post,
+            logged_in: req.session.logged_in
+        });
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
 
 module.exports = router;
