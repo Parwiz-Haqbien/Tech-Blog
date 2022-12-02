@@ -1,12 +1,9 @@
 const withAuth = (req, res, next) => {
-  //if the user is not logged in, redirect them to the login page
-    if (!req.session.user_id) {
+  if(!req.session.loggedIn) {
       res.redirect('/login');
-    } else {
-      //if the user is logged in, use the route function that will allow them to view the gallery
-      //call the next function if the use is approved
+  } else {
       next();
-    }
-  };
-  
-  module.exports = withAuth;
+  }
+};
+
+module.exports = withAuth;

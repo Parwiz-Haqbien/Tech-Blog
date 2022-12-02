@@ -1,43 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tech Blog</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <script src="https://kit.fontawesome.com/7afa7fcea5.js" crossorigin="anonymous"></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="/public/css/jass.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
-    <title>Tech-Blog</title>
-</head>
+    <body>
+    <section class="hero is-medium is-info">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="/">Home</a>
 
-<body>
-    <div class="flex-column justify-space-around">
-        <header class="header-style">
-            <nav class="nav-bar mb-3">
-                <a href="/">Home</a>
-                {{#if logged_in}}
-                <a class="text-warning disabled">Welcome {{logged_name}}!</a>
-                <a href="/dashboard">Dashboard</a>
-                <a href="/" id="logout">Logout</a>
-                {{else}}
-                <a href="/login">Login</a>
-                {{/if}}
+                        <a class="navbar-item" href="/signup">Sign Up</a>
+
+                        <a class="navbar-item" href="/dashboard">Dashboard</a>
+
+                        {{#if loggedIn}}
+                        <a class="navbar-item" id="logout" href="/">Logout</a> 
+
+                        {{else}}
+                        <a class="navbar-item" href="/login">Login</a>
+                        {{/if}}
+                    </div>
+                </div>
             </nav>
-            <div class="header-box rounded">
-                <a href="/" class="header-txt">The Tech Blog</a>
+        </div>
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title"> Tech Blog </p>
             </div>
-        </header>
-        <main class="container container-fluid mt-5">
-            {{!-- Renderer the main page --}}
-            {{{ body }}}
-        </main>
-        <footer class="d-flex justify-content-center mt-5">
-            &copy; The Tech Blog
-        </footer>
-    </div>
-    {{#if logged_in}}
-    <script src="/public/js/logout.js"></script>
-    {{/if}}
-</body>
+        </div>
+    </section>
 
+    <section>
+        {{{ body }}}
+    </section>
+
+        {{#if loggedIn}}
+        <script src="/public/js/logout.js"></script>
+        {{/if}}
+
+    </body>
 </html>

@@ -11,11 +11,13 @@ const seedDatabase = async () => {
   const users = await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
+    plain:true
   });
 
   const posts = await Post.bulkCreate(postData, {
     individualHooks: true,
     returning: true,
+    plain: true
 });
 
 const comments = await Comment.bulkCreate(commentData, {
