@@ -1,11 +1,6 @@
 <div class="container">
     <div class="box">
         <article class="media">
-            <figure class="media-left">
-                <p class="image is-64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png">
-                </p>
-            </figure>
             
             <div class="media-content">
                 <div class="content">
@@ -28,11 +23,6 @@
                 {{#if post.comments}}
                 {{#each post.comments}}
                 <article class="media">
-                    <figure class="media-left">
-                    <p class="image is-48x48">
-                        <img src="https://bulma.io/images/placeholders/96x96.png">
-                    </p>
-                    </figure>
                     <div class="media-content">
                         <div class="content mb-3">
                             {{#if (isEqual ../user user_id) }}
@@ -134,5 +124,5 @@
     </div>
 </div>
 
-<script src="../public/js/modal.js"></script>
-<script src="../public/js/comment.js"></script>
+<script src="/js/modal.js"></script>
+<script src="/js/comment.js"></script>
