@@ -1,1 +1,1 @@
-# Tech-Blog
+# Tech-Blog is a website designed for users to make an account or log in and to share their thoughts with other people. They have the ability to comment on other users comment , edit or delete their own comment

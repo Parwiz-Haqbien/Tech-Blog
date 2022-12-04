@@ -24,12 +24,6 @@ const signupHandler = async(event) => {
         if (response.status === 409) {
             alert('Username is already in use.');
         }
-        if (response.status === 411) {
-            alert('Username must be at least 4 characters long.')
-        }
-        if (response.status === 410) {
-            alert('Password must be at least 8 characters long.')
-        }
     }
 }
 

@@ -51,9 +51,6 @@ router.put('/:id', withAuth, async (req, res) => {
                     id: req.params.id
                 },
             })
-            if (!updateComment) {
-                res.status(404).json({ message: 'Cannot find comment with this id'})
-            }
             res.status.json(updateComment)
         }
         catch (err) {
@@ -80,18 +77,12 @@ router.delete('/:id', withAuth, async (req, res) => {
                     id: req.params.id
                 }
             })
-            if (!oneComment) {
-                res.status(404).json({ message: 'Comment was not found with this id'})
-            }
             res.status(200).json(oneComment)
         }
         catch (err) {
         console.log(err);
         res.status(500).json(err);
         }
-    }
-    else {
-        res.status(400).json({ message: "You Do not have the permission to delete other users comments"})
     }
 });
 

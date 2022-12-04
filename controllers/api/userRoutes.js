@@ -66,14 +66,6 @@ router.post('/', async (req, res) => {
           res.status(409).json({ message: 'This username is already taken, Please enter a different username.' });
           return;
       }
-      if (req.body.username.length < 4) {
-          res.status(411).json({ message: 'Username must contain at least 4 characters' });
-          return;
-      }
-      if (req.body.password.length < 8) {
-          res.status(410).json({ message: 'Password must contain at least 8 characters' });
-          return;
-      }
       const newUser = await User.create({
           username: req.body.username,
           password: req.body.password
@@ -87,7 +79,6 @@ router.post('/', async (req, res) => {
       req.session.password = newUser.password;
       req.session.loggedIn = true;
       res.status(200).json(newUser)
-      console.log("New user created")
       })   
   }
   catch(err) {

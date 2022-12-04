@@ -6,25 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Blog</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-        <script src="https://kit.fontawesome.com/7afa7fcea5.js" crossorigin="anonymous"></script>
 </head>
     <body>
-    <section class="hero is-medium is-info">
+    <section class="hero is-small is-warning">
         <div class="hero-head">
             <nav class="navbar">
                 <div class="container">
                     <div class="navbar-start">
-                        <a class="navbar-item" href="/">Home</a>
+                        <a class="navbar-item has-text-success" href="/">Home</a>
 
-                        <a class="navbar-item" href="/signup">Sign Up</a>
+                        <a class="navbar-item has-text-success" href="/signup">Sign Up</a>
 
-                        <a class="navbar-item" href="/dashboard">Dashboard</a>
+                        <a class="navbar-item has-text-success" href="/dashboard">Dashboard</a>
 
                         {{#if loggedIn}}
-                        <a class="navbar-item" id="logout" href="/">Logout</a> 
+                        <a class="navbar-item has-text-success" id="logout" href="/">Logout</a> 
 
                         {{else}}
-                        <a class="navbar-item" href="/login">Login</a>
+                        <a class="navbar-item has-text-success" href="/login">Login</a>
                         {{/if}}
                     </div>
                 </div>
@@ -32,7 +31,7 @@
         </div>
         <div class="hero-body">
             <div class="container has-text-centered">
-                <p class="title"> Tech Blog </p>
+                <p class="title has-text-success"> Tech Blog </p>
             </div>
         </div>
     </section>
