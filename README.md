@@ -34,4 +34,4 @@ npm run start
 ## Contribution
 Made by Parwiz Haqbien
 
-heroku url: 
+heroku link: https://herkuo-techblog.herokuapp.com/
