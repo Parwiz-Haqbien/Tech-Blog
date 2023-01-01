@@ -30,6 +30,10 @@ Run the following command at the root of your project and answer the prompted qu
 - With Nodemon:
 
 - npm run start
+![App Screenshot](https://github.com/Parwiz-Haqbien/Tech-Blog/blob/main/img/Screenshot%202023-01-02%20013812.png?raw=true)
+![App Screenshot](https://github.com/Parwiz-Haqbien/Tech-Blog/blob/main/img/Screenshot%202023-01-02%20013833.png?raw=true)
+![App Screenshot](https://github.com/Parwiz-Haqbien/Tech-Blog/blob/main/img/Screenshot%202023-01-02%20013854.png?raw=true
+)
 
 ## Contribution
 Made by Parwiz Haqbien
